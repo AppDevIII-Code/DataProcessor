@@ -30,4 +30,23 @@ public class DataLoader
 
         return data;
     }
+
+    public async Task<IReadOnlyCollection<string>> LoadDataAsync()
+    {
+        var data = new List<string>();
+
+        if (File.Exists(dataPath))
+        {
+            using (var reader = new StreamReader(dataPath))
+            {
+                string? line;
+                while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    data.Add(line);
+                }
+            }
+        }
+
+        return data;
+    }
 }

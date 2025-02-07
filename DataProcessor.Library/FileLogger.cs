@@ -23,4 +23,10 @@ public class FileLogger : ILogger
         writer.WriteLine(
             $"{DateTime.Now:s}: {message} - {data}");
     }
+    public async Task LogMessageAsync(string message, string data)
+    {
+        using var writer = new StreamWriter(logPath, true);
+        await writer.WriteAsync(
+            $"{DateTime.Now:s}: {message} - {data}");
+    }
 }

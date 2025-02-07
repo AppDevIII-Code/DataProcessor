@@ -6,4 +6,9 @@ public class NullLogger : ILogger
     {
         // does nothing
     }
+    public async Task LogMessageAsync(string message, string data)
+    {
+        // does nothing
+        await Task.CompletedTask;
+    }
 }
